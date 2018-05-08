@@ -36,8 +36,8 @@ namespace SQL2
         private void button2_Click(object sender, EventArgs e)
         {
             var data = new DataAccess();
-            var model = textBox1.Text;
-            data.Delete(model);
+            Model selectedItem = (Model)listBox1.SelectedItem;
+            data.Delete(selectedItem);
             UpdateBinding();
         }
 
