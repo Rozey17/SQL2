@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace SQL2
 {
-    public partial class Form1 : Form
+    public partial class Form1 : MetroFramework.Forms.MetroForm
     {
         private List<Model> model = new List<Model>();
 
@@ -54,7 +54,7 @@ namespace SQL2
             var name = textBox1.Text;
             var model = new Model(Guid.NewGuid(), name);
             data.Insert(model);                      
-           UpdateBinding();
+            UpdateBinding();
         }
     }
 }
