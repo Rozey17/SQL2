@@ -12,9 +12,49 @@ namespace SQL2
 {
     public partial class Form1 : Form
     {
+        private List<Model> model = new List<Model>();
+
         public Form1()
         {
             InitializeComponent();
+            UpdateBinding();
+        }
+
+        void UpdateBinding()
+        {
+            listBox1.DataSource = model;
+            listBox1.ValueMember = "Display";
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            var data = new DataAccess();
+            model = data.GetPeople();
+            UpdateBinding();// It's a MUST
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            var data = new DataAccess();
+            var model = textBox1.Text;
+            data.Delete(model);
+            UpdateBinding();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            var data = new DataAccess();          
+            model = data.GetName(textBox1.Text);
+            UpdateBinding();
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            var data = new DataAccess();
+            var name = textBox1.Text;
+            var model = new Model(Guid.NewGuid(), name);
+            data.Insert(model);                      
+           UpdateBinding();
         }
     }
 }
